@@ -11,7 +11,7 @@ const ListContextProvider = (props) => {
     ]); 
 
     const addTodo = (title) => {
-        setItems([...items, {title: "get money", complete: false, id: uuid() }])
+        setItems([...items, {title, complete: false, id: uuid() }])
 
     }
     const removeTodo = (id) => {
