@@ -10,9 +10,6 @@ function App() {
       <ListContextProvider>
         <Navbar />
         <ListDisplay />
-      
-
-
       </ListContextProvider>
       
      {/* <Add /> */}

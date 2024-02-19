@@ -6,7 +6,7 @@ const ItemDetails = ({ item }) => {
     const { removeTodo } = useContext(ListContext)
     return (
 
-      <li>
+      <li onClick = {() => removeTodo(item.id)}>
         <div className="title">{item.title}</div>
       </li>
     )
