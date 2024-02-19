@@ -21,7 +21,7 @@ const ListContextProvider = (props) => {
 
 
     const addTodo = (title) => {
-        setItems([...items, {title, complete: false, id: uuid() }])
+        setItems([...items, {title, complete: false, editing: false, id: uuid() }])
 
     }
     const removeTodo = (id) => {
@@ -30,11 +30,21 @@ const ListContextProvider = (props) => {
 
 
     const completeToggle = (id) =>{
-        setItems(items.map(item => item.id ==id?  { ...item, complete: !item.complete } : item))
+        setItems(items.map(item => item.id === id?  { ...item, complete: !item.complete } : item))
     };
 
+    const editEnabler = (id, newTitle) => {
+        setItems(items.map(item => item.id === id? {...item, title: newTitle } : item))
+    }
+
+    const editDoneToggle = (id) => {
+        setItems(items.map(item => item.id === id? { ...item, editing: !item.editing } : item))
+    }
+
+
+
     return (
-        <ListContext.Provider value={{items, addTodo, removeTodo, completeToggle}}>
+        <ListContext.Provider value={{items, addTodo, removeTodo, completeToggle,editEnabler, editDoneToggle}}>
             { props.children }
         </ListContext.Provider> 
 
