@@ -12,8 +12,6 @@ function Add() {
         event.preventDefault()
         setItem(event.target.todoItem.value) 
     }
-
-
     return (
         <form onSubmit={create}>
             <input name="todoItem"  />
