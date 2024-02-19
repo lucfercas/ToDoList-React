@@ -15,9 +15,9 @@ const ListContextProvider = (props) => {
 
     useEffect(()=>{
         localStorage.setItem("items", JSON.stringify(items))
-
     },[items])
 
+   
 
 
     const addTodo = (title) => {
@@ -27,12 +27,22 @@ const ListContextProvider = (props) => {
     const removeTodo = (id) => {
         setItems(items.filter((item) => item.id !== id ))
     }; 
+
+
+    const completeToggle = (id) =>{
+        setItems(items.map(item => item.id ==id?  { ...item, complete: !item.complete } : item))
+    };
+
     return (
-        <ListContext.Provider value={{items, addTodo, removeTodo}}>
+        <ListContext.Provider value={{items, addTodo, removeTodo, completeToggle}}>
             { props.children }
         </ListContext.Provider> 
 
     )
+
+
+
+
 }
 
 export default ListContextProvider
