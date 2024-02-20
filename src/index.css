@@ -76,3 +76,10 @@ input[type="submit"]{
   display: block; 
 
 }
+
+.title {
+  background: #3c1f3c;;
+  color: #ffff; 
+  border: none; 
+
+}

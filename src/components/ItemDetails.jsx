@@ -3,10 +3,17 @@ import { ListContext } from "../contexts/ListContext";
 
 
 const ItemDetails = ({ item }) => {
-    const { removeTodo, completeToggle, editEnabler, editDoneToggle } = useContext(ListContext)
+    const { removeTodo, completeToggle, editEnabler, editDoneToggle,importance } = useContext(ListContext)
     return (
 
       <li>
+        <input  type="checkbox" checked={item.complete} onClick = {() => completeToggle(item.id)} />
+        <select value={item.importanceLevel} onChange={(e)=>{importance(item.id, e.target.value)}}>
+            <option value="pleaseSelect">Please select</option>
+            <option value="important">Important</option>
+            <option value="notImportant">Not important</option>
+            <option value="urgent">Urgent</option>
+        </select>
 
         <input className="title" 
         style={{ textDecoration: item.complete ? "line-through" : "none" }} 
@@ -16,7 +23,7 @@ const ItemDetails = ({ item }) => {
         disabled={!item.editing}
                    />
         <button onClick = {() => removeTodo(item.id)}>Delete</button>
-        <button onClick = {() => completeToggle(item.id)} >Complete?</button>
+        
         <button onClick = {() => editDoneToggle(item.id)} >{item.editing? "Done": "Edit"}</button>
       </li>
     )
