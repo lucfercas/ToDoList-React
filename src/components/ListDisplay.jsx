@@ -1,12 +1,16 @@
 import { useContext } from "react";
 import { ListContext } from "../contexts/ListContext";
 import  ItemDetails  from "./ItemDetails"
+import ListHead from "./ListHead"
 
 const ListDisplay = () => {
     const { items } = useContext(ListContext)
     return items.length? ( 
         <div className = "book-list">
+
             <ul>
+                <ListHead />
+
                { items.map(item => {
                  return ( <ItemDetails item={item} key={item.id} /> ); 
                })} 

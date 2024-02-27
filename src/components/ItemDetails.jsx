@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { ListContext } from "../contexts/ListContext";
+import { Trash } from "react-bootstrap-icons"
+
 
 
 const ItemDetails = ({ item }) => {
@@ -22,7 +24,7 @@ const ItemDetails = ({ item }) => {
         onBlur={() => editEnabler(item.id, item.title)}
         disabled={!item.editing}
                    />
-        <button onClick = {() => removeTodo(item.id)}>Delete</button>
+        <button onClick = {() => removeTodo(item.id)}><Trash /></button>
         
         <button onClick = {() => editDoneToggle(item.id)} >{item.editing? "Done": "Edit"}</button>
       </li>
