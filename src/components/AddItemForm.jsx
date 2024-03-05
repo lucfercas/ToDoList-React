@@ -5,9 +5,23 @@ const AddItemFrom = () => {
     const { addTodo } = useContext(ListContext)
     const [title, setTitle] = useState("")
     const handleSubmit = (e) =>{
-       e.preventDefault()
-       addTodo(title); 
-       setTitle(""); 
+      e.preventDefault(); // Prevent form submission from reloading the page
+      fetch('http://localhost:3000/tasks', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ title: newTask }),
+      })
+      .then(response => response.json())
+      .then(() => {
+        setTasks([...tasks, { title: newTask }]);
+        setNewTask(''); // Clear input after submission
+      })
+      .catch(error => console.error('Error adding task:', error));
+      //  e.preventDefault()
+      //  addTodo(title); 
+      //  setTitle(""); 
        
     }
 

@@ -1,5 +1,6 @@
 import { useState, createContext, useEffect} from "react"; 
-import {v1 as uuid} from "uuid"
+// import {v1 as uuid} from "uuid"
+const model = require("../../model/tasks.js")
 
 
 export const ListContext = createContext(); 
@@ -8,13 +9,14 @@ const ListContextProvider = (props) => {
     const [items, setItems] = useState(dispalyData()); 
 
     function dispalyData() {
-    const localData = localStorage.getItem("items"); 
-    return localData ? JSON.parse(localData): []
+
+    // const localData = localStorage.getItem("items"); 
+    // return localData ? JSON.parse(localData): []
 }
     
 
     useEffect(()=>{
-        localStorage.setItem("items", JSON.stringify(items))
+        model.setItem("items", JSON.stringify(items))
     },[items])
 
    
