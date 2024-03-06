@@ -1,29 +1,52 @@
 import { useState, createContext, useEffect} from "react"; 
 import {v1 as uuid} from "uuid"
-
+// const model = require("../../model/tasks.js")
 
 export const ListContext = createContext(); 
 
 const ListContextProvider = (props) => {
-    const [items, setItems] = useState(dispalyData()); 
+    const [items, setItems] = useState([]);
 
-    function dispalyData() {
-    const localData = localStorage.getItem("items"); 
-    return localData ? JSON.parse(localData): []
-}
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://localhost:3001/tasks');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setItems(data);
+            } catch (error) {
+                console.error("There was a problem with your fetch operation:", error);
+            }
+        };
     
+        fetchData();
+    }, []);
 
-    useEffect(()=>{
-        localStorage.setItem("items", JSON.stringify(items))
-    },[items])
 
    
 
 
     const addTodo = (title) => {
-        setItems([...items, {title, complete: false, editing: false, importanceLevel: "please select", id: uuid() }])
 
+        // setItems([...items, {title, complete: false, editing: false, importanceLevel: "please select", id: uuid() }])
+        fetch('http://localhost:3001/tasks', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ title: newTask }),
+          })
+          .then(response => response.json())
+          .then(() => {
+            setTasks([...tasks, { title: newTask }]);
+            setNewTask(''); // Clear input after submission
+          })
+          .catch(error => console.error('Error adding task:', error));
     }
+
+
     const removeTodo = (id) => {
         setItems(items.filter((item) => item.id !== id ))
     }; 

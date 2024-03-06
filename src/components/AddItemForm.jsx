@@ -5,7 +5,9 @@ const AddItemFrom = () => {
     const { addTodo } = useContext(ListContext)
     const [title, setTitle] = useState("")
     const handleSubmit = (e) =>{
-       e.preventDefault()
+      e.preventDefault(); // Prevent form submission from reloading the page
+
+
        addTodo(title); 
        setTitle(""); 
        
