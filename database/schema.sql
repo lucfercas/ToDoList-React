@@ -1,6 +1,8 @@
 BEGIN;
 
-CREATE TABLE IF NOT EXISTS tasks (
+
+
+CREATE TABLE IF NOT EXISTS todotasks (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT,
     complete INTEGER,
@@ -8,4 +10,4 @@ CREATE TABLE IF NOT EXISTS tasks (
     importanceLevel TEXT
 );
 
-COMMIT;
+COMMIT; 

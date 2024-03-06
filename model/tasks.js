@@ -1,13 +1,25 @@
 const db = require("../database/db.js");
 
-const insert_task = db.prepare("INSERT INTO tasks (title) VALUES (?)");
+const insert_task = db.prepare(
+  `INSERT INTO todotasks (title) VALUES (?) RETURNING id, title`,
+);
 
 function createTask(title) {
-    insert_task.run(title);
+  return insert_task.get(title);
 }
 
-// createTask("Eat a banana")
-// const tasks = db.prepare("SELECT * FROM tasks").all();
-// console.log(tasks)
+const result = createTask("send flower");
+console.log(result);
 
-module.exports = { createTask }
+// const readTask = db.prepare(/*sql*/ `
+// SELECT
+// id,
+// title,
+// complete,
+// editing,
+// importanceLevel
+// FROM
+// todotasks
+// `);
+
+module.exports = { createTask };
