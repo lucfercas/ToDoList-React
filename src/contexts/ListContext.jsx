@@ -39,10 +39,10 @@ const ListContextProvider = (props) => {
             body: JSON.stringify({ title: newTask }),
           })
           .then(response => response.json())
-          .then(() => {
-            setTasks([...tasks, { title: newTask }]);
-            setNewTask(''); // Clear input after submission
-          })
+        //   .then(() => {
+        //     setTasks([...tasks, { title: newTask }]);
+        //     setNewTask(''); // Clear input after submission
+        //   })
           .catch(error => console.error('Error adding task:', error));
     }
 
