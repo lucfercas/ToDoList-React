@@ -19,6 +19,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "db": "DB_FILE=db.sqlite node database/db.js",
     "start": "react-scripts start",
     "server": "node server.js",
     "dev": "concurrently \"npm start\" \"npm run server\"",
