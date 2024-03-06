@@ -1,43 +1,25 @@
 const db = require("../database/db.js");
 
-const insert_task = db.prepare("INSERT INTO tasks (title) VALUES (?)");
-
-function createTask(title) {
-    insert_task.run(title);
-}
-
-
-
-const readTask = db.prepare(/*sql*/`
-SELECT 
-id, 
-title, 
-complete, 
-editing, 
-importanceLevel
-FROM 
-tasks
-`
-
-
-)
-
-
-
-
-CREATE TABLE IF NOT EXISTS tasks (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT,
-    complete INTEGER,
-    editing INTEGER,
-    importanceLevel TEXT
+const insert_task = db.prepare(
+  `INSERT INTO todotasks (title) VALUES (?) RETURNING id, title`,
 );
 
+function createTask(title) {
+  return insert_task.get(title);
+}
 
+const result = createTask("send flower");
+console.log(result);
 
+// const readTask = db.prepare(/*sql*/ `
+// SELECT
+// id,
+// title,
+// complete,
+// editing,
+// importanceLevel
+// FROM
+// todotasks
+// `);
 
-// createTask("Eat a banana")
-// const tasks = db.prepare("SELECT * FROM tasks").all();
-// console.log(tasks)
-
-module.exports = { createTask }
+module.exports = { createTask };
