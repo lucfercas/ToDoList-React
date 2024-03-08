@@ -1,12 +1,15 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const { createTask } = require("./model/tasks.js");
+const { createTask, listTasks } = require("./model/tasks.js");
 
 // const tasksRoutes = require('./routes/taskRoutes.js'); // Import tasks routes
 
 app.get("/create", (req, res) => {
   const title = req.body.title;
+  createTask(title);
+
+  res.send("data inserted ");
 });
 
 const PORT = process.env.PORT || 3001;
