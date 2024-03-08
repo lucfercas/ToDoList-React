@@ -1,87 +1,95 @@
-import { useState, createContext, useEffect} from "react"; 
-import {v1 as uuid} from "uuid"
+import { useState, createContext, useEffect } from "react";
+// import { v1 as uuid } from "uuid";
 // const model = require("../../model/tasks.js")
 
-export const ListContext = createContext(); 
+export const ListContext = createContext();
 
 const ListContextProvider = (props) => {
-    const [items, setItems] = useState([]);
+  const [items, setItems] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('http://localhost:3001/tasks');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                setItems(data);
-            } catch (error) {
-                console.error("There was a problem with your fetch operation:", error);
-            }
-        };
-    
-        fetchData();
-    }, []);
-
-
-   
-
-
-    const addTodo = (title) => {
-
-        // setItems([...items, {title, complete: false, editing: false, importanceLevel: "please select", id: uuid() }])
-        fetch('http://localhost:3001/tasks', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ title: newTask }),
-          })
-          .then(response => response.json())
-        //   .then(() => {
-        //     setTasks([...tasks, { title: newTask }]);
-        //     setNewTask(''); // Clear input after submission
-        //   })
-          .catch(error => console.error('Error adding task:', error));
-    }
-
-
-    const removeTodo = (id) => {
-        setItems(items.filter((item) => item.id !== id ))
-    }; 
-
-
-    const completeToggle = (id) =>{
-        setItems(items.map(item => item.id === id?  { ...item, complete: !item.complete } : item))
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/tasks");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setItems(data);
+      } catch (error) {
+        console.error("There was a problem with your fetch operation:", error);
+      }
     };
 
-    const editEnabler = (id, newTitle) => {
-        setItems(items.map(item => item.id === id? {...item, title: newTitle } : item))
-    }
+    fetchData();
+  }, []);
 
-    const editDoneToggle = (id) => {
-        setItems(items.map(item => item.id === id? { ...item, editing: !item.editing } : item))
-    }
+  const addTodo = (title) => {
+    // setItems([...items, {title, complete: false, editing: false, importanceLevel: "please select", id: uuid() }])
+    fetch("http://localhost:3001/tasks", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title: newTask }),
+    })
+      .then((response) => response.json())
+      .catch((error) => console.error("Error adding task:", error));
+  };
 
-    const importance = (id, newImportanceLevel) => {
-        setItems (items.map(item => item.id === id? {...item, importanceLevel: newImportanceLevel } : item ))
-    }
+  const removeTodo = (id) => {
+    setItems(items.filter((item) => item.id !== id));
+  };
 
-    
+  const completeToggle = (id) => {
+    setItems(
+      items.map((item) =>
+        item.id === id ? { ...item, complete: !item.complete } : item,
+      ),
+    );
+  };
 
+  const editEnabler = (id, newTitle) => {
+    setItems(
+      items.map((item) =>
+        item.id === id ? { ...item, title: newTitle } : item,
+      ),
+    );
+  };
 
+  const editDoneToggle = (id) => {
+    setItems(
+      items.map((item) =>
+        item.id === id ? { ...item, editing: !item.editing } : item,
+      ),
+    );
+  };
 
-    return (
-        <ListContext.Provider value={{items, addTodo, removeTodo, completeToggle,editEnabler, editDoneToggle, importance}}>
-            { props.children }
-        </ListContext.Provider> 
+  const importance = (id, newImportanceLevel) => {
+    setItems(
+      items.map((item) =>
+        item.id === id
+          ? { ...item, importanceLevel: newImportanceLevel }
+          : item,
+      ),
+    );
+  };
 
-    )
+  return (
+    <ListContext.Provider
+      value={{
+        items,
+        addTodo,
+        removeTodo,
+        completeToggle,
+        editEnabler,
+        editDoneToggle,
+        importance,
+      }}
+    >
+      {props.children}
+    </ListContext.Provider>
+  );
+};
 
-
-
-
-}
-
-export default ListContextProvider
+export default ListContextProvider;

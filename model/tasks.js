@@ -8,18 +8,19 @@ function createTask(title) {
   return insert_task.get(title);
 }
 
-const result = createTask("send flower");
-console.log(result);
+const select_tasks = db.prepare(/*sql*/ `
+SELECT
+id,
+title,
+complete,
+editing,
+importanceLevel
+FROM
+todotasks
+`);
 
-// const readTask = db.prepare(/*sql*/ `
-// SELECT
-// id,
-// title,
-// complete,
-// editing,
-// importanceLevel
-// FROM
-// todotasks
-// `);
+function listTasks() {
+  return select_tasks.all();
+}
 
-module.exports = { createTask };
+module.exports = { createTask, listTasks };

@@ -1,7 +1,5 @@
-
-import Add from "./Add"
-import ListContextProvider from './contexts/ListContext';
-import Navbar from './components/Navbar.';
+import ListContextProvider from "./contexts/ListContext";
+import Navbar from "./components/Navbar.";
 import ListDisplay from "./components/ListDisplay";
 import AddItemFrom from "./components/AddItemForm";
 
@@ -13,8 +11,8 @@ function App() {
         <ListDisplay />
         <AddItemFrom />
       </ListContextProvider>
-      
-     {/* <Add /> */}
+
+      {/* <Add /> */}
     </div>
   );
 }
