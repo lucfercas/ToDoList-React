@@ -7,22 +7,23 @@ export const ListContext = createContext();
 const ListContextProvider = (props) => {
     const [items, setItems] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('http://localhost:3001/tasks');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                setItems(data);
-            } catch (error) {
-                console.error("There was a problem with your fetch operation:", error);
-            }
-        };
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await fetch('http://localhost:3001/tasks');
+    //             if (!response.ok) {
+    //                 throw new Error('Network response was not ok');
+    //             }
+    //             const data = await response.json();
+    //             setItems(data);
+    //         } catch (error) {
+    //             console.error("There was a problem with your fetch operation:", error);
+    //         }
+    //     };
     
-        fetchData();
-    }, []);
+    //     fetchData();
+    // }, []);
+
 
 
    
@@ -31,19 +32,6 @@ const ListContextProvider = (props) => {
     const addTodo = (title) => {
 
         // setItems([...items, {title, complete: false, editing: false, importanceLevel: "please select", id: uuid() }])
-        fetch('http://localhost:3001/tasks', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ title: newTask }),
-          })
-          .then(response => response.json())
-        //   .then(() => {
-        //     setTasks([...tasks, { title: newTask }]);
-        //     setNewTask(''); // Clear input after submission
-        //   })
-          .catch(error => console.error('Error adding task:', error));
     }
 
 
