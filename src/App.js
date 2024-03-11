@@ -6,7 +6,6 @@ import ListDisplay from "./components/ListDisplay";
 import AddItemFrom from "./components/AddItemForm";
 
 function App() {
-  console.log(supabase)
   return (
     <div className="App">
       <ListContextProvider>
