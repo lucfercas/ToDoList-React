@@ -1,9 +1,5 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-
-// Components
-import AddItemFrom from "./components/AddItemForm";
-
 // Pages
 import Home from "./pages/Home";
 import Create from "./pages/Create";
@@ -25,7 +21,6 @@ function App() {
         <Route path="/create" element={<Create />} />
         <Route path="/:id" element={<Update />} />
       </Routes>
-        <AddItemFrom />
 
     </BrowserRouter>
   );
