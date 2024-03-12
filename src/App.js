@@ -3,10 +3,13 @@ import supabase from "./config/supabaseClient";
 import { useEffect, useState } from "react";
 
 // Components
-
 import ListDisplay from "./components/ListDisplay";
 import AddItemFrom from "./components/AddItemForm";
 
+// Pages
+import Home from "./pages/Home";
+import Create from "./pages/Create";
+import Update from "./pages/Update";
 
 function App() {
   const [fetchError, setFetchError] = useState(null)
