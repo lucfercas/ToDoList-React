@@ -1,11 +1,10 @@
 import supabase from "./config/supabaseClient";
 // import Add from "./Add"
 import { useEffect, useState } from "react";
-import ListContextProvider from './contexts/ListContext';
 import Navbar from './components/Navbar.';
 import ListDisplay from "./components/ListDisplay";
 import AddItemFrom from "./components/AddItemForm";
-import { fetchWeatherApi } from "openmeteo";
+
 
 function App() {
   const [fetchError, setFetchError] = useState(null)
@@ -32,13 +31,8 @@ function App() {
   }, [])
 
   return (
-
-
-
-
-
     <div className="App">
-      <ListContextProvider>
+      
         <Navbar />
         <ListDisplay />
         <AddItemFrom />
@@ -52,19 +46,7 @@ function App() {
               ))}
             </div>
           )}
-
-
         </div>
-
-
-
-      </ListContextProvider>
-      
-     {/* <Add /> */}
-
-
-
-
     </div>
   );
 }
