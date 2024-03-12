@@ -1,6 +1,8 @@
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import supabase from "./config/supabaseClient";
-// import Add from "./Add"
 import { useEffect, useState } from "react";
+
+// Components
 import Navbar from './components/Navbar.';
 import ListDisplay from "./components/ListDisplay";
 import AddItemFrom from "./components/AddItemForm";
