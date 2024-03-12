@@ -1,4 +1,3 @@
-import AddItemFrom from "../components/AddItemForm";
 import supabase from "../config/supabaseClient"
 import { useEffect, useState } from "react";
 
@@ -23,21 +22,23 @@ const Home = () => {
       }
     }
     fetchTasks()
-
+   
   }, [])
-
+  
   return (
     <div className="page home">
       <h2>Home</h2>
       <div className="empty">No oustanding tasks!</div>
 
-      < AddItemFrom />
-
       {fetchError && (<p>{fetchError}</p>)}
       {tasks && (
         <div className="tasks">
           {tasks.map(task => (
+            <>
             <p>{task.title}</p>
+            <p>{task.importanceLevel}</p>
+            </>
+            
           ))}
         </div>
       )}
