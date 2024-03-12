@@ -5,16 +5,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #553055;
-}
 
+}
+/* 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 .App {
-  background: #4c2a4c;
+
   margin: 20px auto;
   width: 90%;
   max-width: 700px;
@@ -23,12 +23,9 @@ code {
 .navbar {
   padding: 10px 20px;
   text-align: center;
-  background: #6d3d6d;
+
 }
 
-/* .navbar h1 {
-  margin: 10px 0;
-} */
 
 .book-list {
   padding: 20px;
@@ -64,7 +61,7 @@ input[type="text"] {
   margin: 6px 0;
   color: #ffff;
   border: 0;
-  background: #3c1f3c;
+
 }
 
 input[type="submit"] {
@@ -73,11 +70,4 @@ input[type="submit"] {
   border: 0;
   padding: 6px 20px;
   display: block;
-}
-
-/* .title {
-  background: #3c1f3c;;
-  color: #ffff; 
-  border: none; 
-
 } */
