@@ -3,7 +3,7 @@ import supabase from "./config/supabaseClient";
 import { useEffect, useState } from "react";
 
 // Components
-import Navbar from './components/Navbar.';
+
 import ListDisplay from "./components/ListDisplay";
 import AddItemFrom from "./components/AddItemForm";
 
@@ -35,7 +35,11 @@ function App() {
   return (
     <div className="App">
       
-        <Navbar />
+      <div className="navbar">
+      <h1 className="text-l font-bold underline">React ToDo List</h1>
+      <p>Currently you have things to do...</p>
+    </div>
+
         <ListDisplay />
         <AddItemFrom />
 
