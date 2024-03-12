@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { ListContext } from "../contexts/ListContext";
 import  ItemDetails  from "./ItemDetails"
 import ListHead from "./ListHead"
 

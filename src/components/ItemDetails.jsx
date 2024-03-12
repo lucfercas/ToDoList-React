@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { ListContext } from "../contexts/ListContext";
 import { Trash } from "react-bootstrap-icons";
 
 const ItemDetails = ({ item }) => {
