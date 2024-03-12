@@ -7,7 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
 }
-
+/* 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -26,9 +26,6 @@ code {
 
 }
 
-/* .navbar h1 {
-  margin: 10px 0;
-} */
 
 .book-list {
   padding: 20px;
@@ -73,11 +70,4 @@ input[type="submit"] {
   border: 0;
   padding: 6px 20px;
   display: block;
-}
-
-/* .title {
-  background: #3c1f3c;;
-  color: #ffff; 
-  border: none; 
-
 } */
